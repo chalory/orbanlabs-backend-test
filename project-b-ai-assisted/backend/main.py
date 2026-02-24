@@ -20,10 +20,10 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-app.include_router(links_router)
-app.include_router(redirect_router)
-
-
 @app.get("/health")
 def health():
     return {"status": "ok"}
+
+
+app.include_router(links_router)
+app.include_router(redirect_router)
