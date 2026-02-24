@@ -1,7 +1,7 @@
 import json
 from datetime import datetime, timezone
 
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Query
 
 from database import get_connection
 from models import NoteCreate, NoteUpdate, NoteResponse
@@ -38,6 +38,30 @@ def create_note(note: NoteCreate):
 def list_notes():
     conn = get_connection()
     rows = conn.execute("SELECT * FROM notes ORDER BY created_at DESC").fetchall()
+    conn.close()
+    return [row_to_note(r) for r in rows]
+
+
+@router.get("/search", response_model=list[NoteResponse])
+def search_notes(
+    tag: str | None = Query(default=None),
+    q: str | None = Query(default=None),
+):
+    conn = get_connection()
+    clauses = []
+    params = []
+
+    if tag:
+        clauses.append("tags LIKE ?")
+        params.append(f'%"{tag}"%')
+    if q:
+        clauses.append("(title LIKE ? OR body LIKE ?)")
+        params.extend([f"%{q}%", f"%{q}%"])
+
+    where = " AND ".join(clauses) if clauses else "1=1"
+    rows = conn.execute(
+        f"SELECT * FROM notes WHERE {where} ORDER BY created_at DESC", params
+    ).fetchall()
     conn.close()
     return [row_to_note(r) for r in rows]
 
