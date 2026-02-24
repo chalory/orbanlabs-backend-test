@@ -1,0 +1,164 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700");
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  color: #333;
+  font-family: "Poppins", sans-serif;
+  line-height: 1.5;
+  padding: 40px 20px;
+}
+
+.container {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.shorten-form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.shorten-form input {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 14px;
+  outline: none;
+}
+
+.shorten-form input:focus {
+  border-color: #555;
+}
+
+.shorten-form button {
+  padding: 10px 20px;
+  background: #333;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.shorten-form button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.result {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: #e8f5e9;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+
+.result span {
+  flex: 1;
+  color: #2e7d32;
+  font-weight: 500;
+}
+
+.result button {
+  padding: 6px 14px;
+  background: #2e7d32;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.error {
+  padding: 10px 14px;
+  background: #fce4ec;
+  color: #c62828;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  font-size: 13px;
+}
+
+.links-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.links-table th {
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 2px solid #ddd;
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  color: #999;
+}
+
+.links-table td {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.links-table .code {
+  font-weight: 600;
+}
+
+.links-table .url {
+  color: #777;
+  max-width: 300px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.links-table .clicks {
+  text-align: center;
+  font-weight: 700;
+}
+
+.links-table .delete-btn {
+  background: none;
+  border: none;
+  color: #ccc;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.links-table .delete-btn:hover {
+  color: #c62828;
+}
+
+.empty {
+  text-align: center;
+  padding: 40px;
+  color: #999;
+  font-size: 14px;
+}
+
+.loading {
+  text-align: center;
+  padding: 40px;
+  color: #999;
+}
