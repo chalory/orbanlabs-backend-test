@@ -1,12 +1,13 @@
 import json
 from datetime import datetime, timezone
 
-from fastapi import APIRouter, HTTPException, Query
+from fastapi import APIRouter, Depends, HTTPException, Query
 
+from auth import verify_api_key
 from database import get_connection
 from models import NoteCreate, NoteUpdate, NoteResponse
 
-router = APIRouter(prefix="/api/notes", tags=["notes"])
+router = APIRouter(prefix="/api/notes", tags=["notes"], dependencies=[Depends(verify_api_key)])
 
 
 def row_to_note(row) -> NoteResponse:
